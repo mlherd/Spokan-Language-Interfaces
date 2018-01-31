@@ -1,0 +1,5 @@
+name: Julie
+temperature: 10
+pulse: 75
+pain: 2
+blood pressure: 5 - 6

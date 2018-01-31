@@ -6,6 +6,7 @@ p_name = False
 p_temp = False
 p_pulse = False
 p_pain = False
+p_blood= False
 
 file = None
 engine = pyttsx.init()
@@ -23,6 +24,10 @@ def name():
 
 def temp():
     engine.say('Whats is patients temperature:')
+    engine.runAndWait()
+
+def blood():
+    engine.say('Whats is patients blood pressure:')
     engine.runAndWait()
 
 def pulse():
@@ -43,7 +48,7 @@ def end():
 #call introduction method to start the app
 intro()
 
-# get the name
+# get the paitient name
 while p_name == False:
     name()
     rec.record()
@@ -180,5 +185,39 @@ while p_pain == False:
         engine.say('I did not get that')
         engine.runAndWait()
         p_pain = False
+        
+# get blood pressure
+while p_blood == False:
+    blood()
+    rec.record()
+    text, c_rate = google.recognize()
+    if int(round(float(c_rate)))*10 > 9:
+        engine.say('You said')
+        print "You said " + text
+        engine.say(text)
+        engine.runAndWait()
+        yes = False
+        while yes == False:
+            engine.say('Yes or No')
+            engine.runAndWait()
+            rec.record()
+            yn_text, c_rate = google.recognize()
+            if yn_text == "yes" or yn_text == "YES" or yn_text == "Yes":
+                p_blood = True
+                yes = True
+                pp = "blood pressure: " + str(text) + '\n'
+                file.write(pp)
+            elif yn_text == "no" or yn_text == "NO" or yn_text == "No":
+                p_blood = False
+                yes = True
+                engine.say('Okay we should try again')
+                engine.runAndWait()
+            else:
+                p_blood = False
+                yes = False
+    elif text == "**":
+        engine.say('I did not get that')
+        engine.runAndWait()
+        p_blood = False
 
 end()
