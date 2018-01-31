@@ -43,7 +43,7 @@ def end():
 #call introduction method to start the app
 intro()
 
-# get the paitient name
+# get the name
 while p_name == False:
     name()
     rec.record()
