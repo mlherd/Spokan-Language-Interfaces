@@ -1,2 +1,2 @@
-# Spokan-Language-Interfaces
+# Spoken-Language-Interfaces
 Speech Recognition and Speech Synthesis Experiments
