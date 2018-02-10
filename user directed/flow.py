@@ -17,11 +17,5 @@ def detect_intent_texts(project_id, session_id, texts, language_code):
         response = session_client.detect_intent(
             session=session, query_input=query_input)
 
-        #print('=' * 20)
-        #print('Query text: {}'.format(response.query_result.query_text))
-        #print('Detected intent: {} (confidence: {})\n'.format(
-        #    response.query_result.intent.display_name,
-        #    response.query_result.intent_detection_confidence))
         print('System says: {}\n'.format(response.query_result.fulfillment_text))
         return str(response.query_result.fulfillment_text)
-#CLIENT_ACCESS_TOKEN = "69e6f3c7c76846a8937302bbda38a678"
