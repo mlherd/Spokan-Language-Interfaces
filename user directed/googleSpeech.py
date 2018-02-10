@@ -1,6 +1,5 @@
 import io
 import os
-import pyttsx
 
 # Imports the Google Cloud client library
 from google.cloud import speech
